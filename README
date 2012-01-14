@@ -1,0 +1,15 @@
+== Summary ==
+
+Backup all the repository of a user of github
+
+== What you need ==
+
+- bash
+- curl
+- coreutils
+- sed
+- grep
+
+== How to use ==
+
+GitHubBackup.sh sebhtml
