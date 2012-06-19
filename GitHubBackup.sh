@@ -8,24 +8,13 @@ mkdir -p repositories-$user
 
 # fetch the list
 
-curl http://github.com/api/v2/json/repos/show/$user > data.txt
+# API v2
+#curl http://github.com/api/v2/json/repos/show/$user > data.txt
 
-sed -i 's/,/ /g' data.txt
+# API v3
+curl -k https://api.github.com/users/$user/repos > data.txt
 
-for i in $(cat data.txt)
-do
-	echo $i
-done|grep 'name":' > list.txt
-
-sed -i 's/"/ /g' list.txt
-sed -i 's/name :/ /g' list.txt
-
-# convert the list
-
-for i in $(cat list.txt)
-do
-	echo $i
-done > projects.txt
+grep '"name":' data.txt |awk '{print $2}' |sed 's/",//g'|sed 's/"//g'> projects.txt
 
 # clone each repository
 

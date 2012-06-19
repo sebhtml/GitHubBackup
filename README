@@ -1,6 +1,7 @@
 == Summary ==
 
-Backup all the repository of a user of github
+Backup all the repository of a user of github using the
+github json API, version 3.
 
 == What you need ==
 
